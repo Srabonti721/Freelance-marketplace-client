@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #0E3608;
+  --color-secondary: teal;
+}
+.active{
+    text-decoration: underline;
+    font-size: large;
+    color: cadetblue;
+}
