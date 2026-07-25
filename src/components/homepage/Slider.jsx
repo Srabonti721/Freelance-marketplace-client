@@ -27,7 +27,7 @@ const Slider = () => {
   <div className="relative">
     <img
       src={digitalMarket}
-      className="w-full h-[500px] object-cover"
+      className="w-full h-[400px] rounded-4xl object-cover"
     />
     <div className="absolute text-white inset-0 flex flex-col justify-center items-center ">
       <h2 className=" text-2xl md:text-5xl font-bold">Digital marketplace</h2>
@@ -41,7 +41,7 @@ const Slider = () => {
   <div className="relative">
     <img
       src={web}
-      className="w-full h-[500px] object-cover"
+      className="w-full h-[400px] rounded-4xl object-cover"
     />
     <div className="absolute text-white inset-0 flex flex-col justify-center items-center ">
       <h2 className="text-3xl md:text-5xl font-bold">Web Design</h2>
@@ -55,7 +55,7 @@ const Slider = () => {
   <div className="relative">
     <img
       src={skilbook}
-      className="w-full h-[500px] object-cover"
+      className="w-full h-[400px] rounded-4xl object-cover"
     />
     <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
       <h2 className=" text-2xl md:text-5xl font-bold">Graphic Design</h2>
