@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import MyPost from "./pages/MyPost";
 import BrowserTask from "./pages/BrowserTask";
 import AddTask from "./pages/AddTask";
+import AuthProvider from "./context/AuthProvider";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+   return (
+  <AuthProvider>
+   <RouterProvider router={router} />;
+  </AuthProvider>
+   )
 }
 
 export default App;

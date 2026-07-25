@@ -3,7 +3,12 @@ import user1 from "../../assets/user1.jpg";
 import user2 from "../../assets/user2.jpg";
 import user3 from "../../assets/user3.jpg";
 import user4 from "../../assets/user4.jpg";
+import { use } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 const Banner = () => {
+    const user = use(AuthContext);
+    console.log(user);
+    
     return (
         <div className="relative">
             <div>
