@@ -45,8 +45,8 @@ const Register = () => {
             });
     };
     return (
-        <div className="py-10 max-w-lg mx-auto">
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="my-10 max-w-lg mx-auto">
+            <div className="card bg-base-100 w-full py-5 shrink-0 shadow-2xl">
                 <h1 className="text-5xl font-bold text-center">
                     Register now!
                 </h1>
@@ -90,7 +90,7 @@ const Register = () => {
                     </form>
                     <p>have already an account?
                     <Link className='text-blue-800 underline text-sm' to='/auth/login'> Login</Link></p>
-                ------------------------ or -----------------------
+               -------------------------------------- or -------------------------------------
                     {/* Google */}
                     <button
                         onClick={handleGoogleRegister}

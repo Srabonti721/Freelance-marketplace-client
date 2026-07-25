@@ -1,10 +1,12 @@
 import { use } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const Login = () => {
     const { GoogleSignIn, loginUser } = use(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -12,7 +14,7 @@ const Login = () => {
         const formData = new FormData(form);
         const email = formData.get("email");
         const password = formData.get("password");
-        
+
         loginUser(email, password)
             .then((result) => {
                 console.log(result.user);
@@ -26,6 +28,7 @@ const Login = () => {
                             progress: undefined,
                             theme: "dark",
                         });
+                        navigate(`${location.state ? location.state : "/"}`)
             })
             .catch((error) => {
                 console.log(error);
@@ -52,7 +55,7 @@ const Login = () => {
     };
     return (
         <div className="py-10 max-w-lg mx-auto">
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
                 <h1 className="text-5xl font-bold text-center">Login now!</h1>
                 <div className="card-body">
                     <form onSubmit={handleLogin} className="fieldset">
@@ -85,7 +88,7 @@ const Login = () => {
                             Register
                         </Link>
                     </p>
-                    ------------------------ or -----------------------
+                    -------------------------------------- or --------------------------------------
                     {/* Google */}
                     <button
                         onClick={handleGoogleLogin}

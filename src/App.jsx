@@ -10,6 +10,7 @@ import AuthLayout from "./Auth/AuthLayout";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import { ToastContainer } from "react-toastify";
+import PrivateRoute from "./Auth/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,9 @@ const router = createBrowserRouter([
           },
           {
             path:"/add",
-            Component:AddTask
+            element:<PrivateRoute>
+              <AddTask></AddTask>
+            </PrivateRoute>
           },
           {
             path:"/browser",
@@ -30,14 +33,16 @@ const router = createBrowserRouter([
           },
           {
             path:"/myPost",
-            Component:MyPost
+            element:<PrivateRoute>
+              <MyPost></MyPost>
+            </PrivateRoute>
           },
         ]
     },
     {
       path:'/auth',
-      Component:AuthLayout
-    },
+      Component:AuthLayout,
+      children:[
     {
       path:'/auth/login',
       Component:Login
@@ -46,6 +51,9 @@ const router = createBrowserRouter([
       path:'/auth/register',
       Component:Register
     },
+      ]
+    },
+
 ]);
 
 function App() {

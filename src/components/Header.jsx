@@ -6,27 +6,25 @@ import { toast } from "react-toastify";
 
 const Header = () => {
     const { users, logOut } = use(AuthContext);
-    console.log(users);
-const handleLogOut = () =>{
-    logOut().then(()=>{
-        toast.error('🦄 User logOut Successfully!', {
-position: "top-right",
-autoClose: 3000,
-hideProgressBar: false,
-closeOnClick: false,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "dark",
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.error("🦄 User logOut Successfully!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
-});
-    }).catch((error)=>{
-        console.log(error);
-        
-    })
-}
-
-    
     const link = (
         <>
             <NavLink className="mr-5 font-semibold" to={"/"}>
@@ -88,7 +86,10 @@ theme: "dark",
                     </div>
                 </div>
                 {users ? (
-                    <button onClick={handleLogOut} className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none">
+                    <button
+                        onClick={handleLogOut}
+                        className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none"
+                    >
                         Logout
                     </button>
                 ) : (
