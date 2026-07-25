@@ -1,7 +1,21 @@
-import { NavLink } from "react-router";
+import { use } from "react";
+import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.jpg";
+import { AuthContext } from "../context/AuthProvider";
 
 const Header = () => {
+    const { users, logOut } = use(AuthContext);
+    console.log(users);
+const handleLogOut = () =>{
+    logOut().then(()=>{
+        alert('user logout successfully')
+    }).catch((error)=>{
+        console.log(error);
+        
+    })
+}
+
+    
     const link = (
         <>
             <NavLink className="mr-5 font-semibold" to={"/"}>
@@ -62,9 +76,18 @@ const Header = () => {
                         <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
                     </div>
                 </div>
-                <a className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none">
-                    signUp
-                </a>
+                {users ? (
+                    <button onClick={handleLogOut} className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none">
+                        Logout
+                    </button>
+                ) : (
+                    <Link
+                        to={"/auth/login"}
+                        className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none"
+                    >
+                        Login
+                    </Link>
+                )}
             </div>
         </div>
     );

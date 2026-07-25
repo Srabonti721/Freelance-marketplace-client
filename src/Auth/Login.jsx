@@ -1,5 +1,6 @@
 import { use } from "react";
 import { AuthContext } from "../context/AuthProvider";
+import { Link } from "react-router";
 
 const Login = () => {
     const { GoogleSignIn, loginUser } = use(AuthContext);
@@ -10,7 +11,9 @@ const Login = () => {
         const formData = new FormData(form);
         const email = formData.get("email");
         const password = formData.get("password");
-        console.log(email, password);
+
+
+        // console.log(email, password);
         loginUser(email, password)
             .then((result) => {
                 console.log(result.user);
@@ -53,6 +56,9 @@ const Login = () => {
                         </div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </form>
+                    <p>Don't have an account?
+                    <Link className='text-blue-800 underline text-sm' to='/auth/register'> Register</Link></p>
+                ------------------------ or -----------------------
                     {/* Google */}
                     <button
                         onClick={handleGoogleLogin}
