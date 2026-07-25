@@ -5,7 +5,7 @@
   name: "light";
   default: true;
   --color-primary: #0E3608;
-  --color-secondary: teal;
+  --color-secondary: #278718;
 }
 .active{
     text-decoration: underline;
