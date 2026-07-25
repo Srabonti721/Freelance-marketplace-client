@@ -2,13 +2,24 @@ import { use } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.jpg";
 import { AuthContext } from "../context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Header = () => {
     const { users, logOut } = use(AuthContext);
     console.log(users);
 const handleLogOut = () =>{
     logOut().then(()=>{
-        alert('user logout successfully')
+        toast.error('🦄 User logOut Successfully!', {
+position: "top-right",
+autoClose: 3000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+
+});
     }).catch((error)=>{
         console.log(error);
         

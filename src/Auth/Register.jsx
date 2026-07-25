@@ -84,7 +84,7 @@ const Register = () => {
                         <div>
                             <a className="link link-hover">Forgot password?</a>
                         </div>
-                        <button className="btn btn-neutral mt-4">
+                        <button className="btn hover:bg-gray-600 btn-neutral mt-4">
                             Register
                         </button>
                     </form>
@@ -94,7 +94,7 @@ const Register = () => {
                     {/* Google */}
                     <button
                         onClick={handleGoogleRegister}
-                        className="btn bg-white text-black border-[#e5e5e5]"
+                        className="btn hover:bg-red-400 bg-white text-black border-[#e5e5e5]"
                     >
                         <svg
                             aria-label="Google logo"
