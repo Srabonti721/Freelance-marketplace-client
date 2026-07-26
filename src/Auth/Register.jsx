@@ -1,10 +1,11 @@
 import { use, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Register = () => {
-    const { createUser, GoogleSignIn } = use(AuthContext);
+    const { createUser, GoogleSignIn, updateUser , setUsers} = use(AuthContext);
     const [error, setError] = useState("");
+    const navigate = useNavigate()
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -28,12 +29,30 @@ const Register = () => {
         console.log(name, photo, email, password);
         createUser(email, password)
             .then((result) => {
-                console.log(result.user);
+                const users = result.user
+                console.log(users);
+
+                updateUser(name, photo)
+//                 update({displayName:name, photoURL: photo}).then(()=>{
+//                       setUsers({...users, displayName:name, photoURL:photo});
+navigate('/')
+//                 }).catch(error=>{
+//                     console.log(error);
+//                     setUsers(users)
+//                 })
             })
             .catch((error) => {
                 console.log(error);
             });
     };
+
+            //   UpdateUserProfile({ displayName: name, photoURL: photo }).then(() => {
+            //         setUser({ ...users, displayName: name, photoURL: photo });
+            //         navigate('/')
+            //     }).catch((error) => {
+            //         console.log(error);
+            //         setUser(users)
+            //     });
 
     const handleGoogleRegister = () => {
         GoogleSignIn()

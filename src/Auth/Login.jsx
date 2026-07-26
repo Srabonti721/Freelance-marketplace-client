@@ -1,12 +1,12 @@
 import { use } from "react";
-import { AuthContext } from "../context/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { AuthContext } from "../context/AuthProvider";
 
 const Login = () => {
     const { GoogleSignIn, loginUser } = use(AuthContext);
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -18,17 +18,17 @@ const Login = () => {
         loginUser(email, password)
             .then((result) => {
                 console.log(result.user);
-                        toast.success('🦄 User login successfully !', {
-                            position: "top-right",
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: false,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "dark",
-                        });
-                        navigate(`${location.state ? location.state : "/"}`)
+                toast.success("🦄 User login successfully !", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                navigate(`${location.state ? location.state : "/"}`);
             })
             .catch((error) => {
                 console.log(error);
@@ -38,16 +38,16 @@ const Login = () => {
         GoogleSignIn()
             .then((result) => {
                 console.log(result.user);
-                    toast.success('🦄 User login with google successfully !', {
-                            position: "top-right",
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: false,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                        });
+                toast.success("🦄 User login with google successfully !", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
             .catch((error) => {
                 console.log(error);
@@ -76,7 +76,9 @@ const Login = () => {
                         <div>
                             <a className="link link-hover">Forgot password?</a>
                         </div>
-                        <button className="btn hover:bg-gray-600 btn-neutral mt-4">Login</button>
+                        <button className="btn hover:bg-gray-600 btn-neutral mt-4">
+                            Login
+                        </button>
                     </form>
                     <p>
                         Don't have an account?
@@ -88,7 +90,8 @@ const Login = () => {
                             Register
                         </Link>
                     </p>
-                    -------------------------------------- or --------------------------------------
+                    -------------------------------------- or
+                    --------------------------------------
                     {/* Google */}
                     <button
                         onClick={handleGoogleLogin}
