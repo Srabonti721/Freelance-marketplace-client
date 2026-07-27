@@ -13,6 +13,7 @@ import MyPost from "./pages/MyPost";
 import BrowserTask from "./pages/browerTask/BrowserTask";
 import Details from "./pages/browerTask/Details";
 import Update from "./components/MyPost.jsx/Update";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -53,7 +54,8 @@ const router = createBrowserRouter([
             {
                 path:'/update/:id',
                 Component:Update,
-                 loader: ({params}) => fetch(`http://localhost:3000/task/${params.id}`)
+                 loader: ({params}) => fetch(`http://localhost:3000/task/${params.id}`),
+                 
             }
         ],
     },
@@ -71,6 +73,10 @@ const router = createBrowserRouter([
             },
         ],
     },
+    {
+        path:'*',
+        Component:ErrorPage
+    }
 ]);
 
 function App() {
