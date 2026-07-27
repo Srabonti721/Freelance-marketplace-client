@@ -37,7 +37,7 @@ const AddTask = () => {
         <div className="bg-gray-100 p-10 rounded-xl my-5">
             <div className="text-center space-y-4">
                 <h2 className="text-2xl md:text-4xl font-semibold">Add Task</h2>
-                <p className="text-gray-500">
+                <p className="text-sm md:text-xl text-gray-500">
                     To add items like skills or portfolio projects to your
                     profile on Freelancer, log in, go to your profile page, and
                     use the edit or manage options.

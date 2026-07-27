@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 
 const Register = () => {
-    const { createUser, GoogleSignIn, updateUser, setUsers } = use(AuthContext);
+    const { createUser, GoogleSignIn, updateUser, } = use(AuthContext);
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const handleRegister = (e) => {
@@ -50,9 +50,9 @@ const Register = () => {
             });
     };
     return (
-        <div className="my-10 max-w-lg mx-auto">
+        <div className="my-10 max-w-sm px-2 md:max-w-lg mx-auto">
             <div className="card bg-base-100 w-full py-5 shrink-0 shadow-2xl">
-                <h1 className="text-5xl font-bold text-center">
+                <h1 className=" text-3xl md:text-5xl font-bold text-center">
                     Register now!
                 </h1>
                 <div className="card-body">
@@ -63,6 +63,7 @@ const Register = () => {
                             type="text"
                             className="input w-full"
                             placeholder="Name"
+                            required
                         />
                         <label className="label">PhotoURL</label>
                         <input
@@ -70,6 +71,7 @@ const Register = () => {
                             type="text"
                             className="input w-full"
                             placeholder="PhotoURL"
+                            required
                         />
                         <label className="label">Email</label>
                         <input
@@ -77,6 +79,7 @@ const Register = () => {
                             type="email"
                             className="input w-full"
                             placeholder="Email"
+                            required
                         />
                         <label className="label">Password</label>
                         <input
@@ -84,12 +87,13 @@ const Register = () => {
                             type="password"
                             className="input w-full"
                             placeholder="Password"
+                            required
                         />
                         {error && <p className="text-red-600 ">{error}</p>}
                         <div>
                             <a className="link link-hover">Forgot password?</a>
                         </div>
-                        <button className="btn hover:bg-gray-600 btn-neutral mt-4">
+                        <button className="btn  hover:bg-gray-600 btn-neutral mt-4">
                             Register
                         </button>
                     </form>
@@ -103,8 +107,8 @@ const Register = () => {
                             Login
                         </Link>
                     </p>
-                    -------------------------------------- or
-                    -------------------------------------
+                    ------------------------------------or
+                    ------------------------------------
                     {/* Google */}
                     <button
                         onClick={handleGoogleRegister}

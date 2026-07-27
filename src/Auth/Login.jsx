@@ -54,9 +54,9 @@ const Login = () => {
             });
     };
     return (
-        <div className="py-10 max-w-lg mx-auto">
+        <div className="py-10 px-2 max-w-lg mx-auto">
             <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
-                <h1 className="text-5xl font-bold text-center">Login now!</h1>
+                <h1 className="text-3xl md:text-5xl font-bold text-center">Login now!</h1>
                 <div className="card-body">
                     <form onSubmit={handleLogin} className="fieldset">
                         <label className="label">Email</label>
@@ -65,6 +65,7 @@ const Login = () => {
                             type="email"
                             className="input w-full"
                             placeholder="Email"
+                            required
                         />
                         <label className="label">Password</label>
                         <input
@@ -72,6 +73,7 @@ const Login = () => {
                             type="password"
                             className="input w-full"
                             placeholder="Password"
+                            required
                         />
                         <div>
                             <a className="link link-hover">Forgot password?</a>
