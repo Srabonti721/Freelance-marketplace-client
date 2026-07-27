@@ -13,6 +13,7 @@ const {tasks, setTasks} = use(AuthContext)
 }, []);
     return (
         <div>
+          <h2 className='text-2xl p-4 font-semibold'>Featured Tasks</h2>
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
   {tasks.map(task => (
     <div key={task._id} className="card bg-base-100 shadow-xl">
