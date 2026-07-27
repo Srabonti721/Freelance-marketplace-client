@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.jpg";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
-
+import userIcon from '../assets/icon.png'
 const Header = () => {
     const { users, logOut } = use(AuthContext);
     const handleLogOut = () => {
@@ -80,9 +80,9 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1">{link}</ul>
             </div>
             <div className=" navbar-end gap-2 mr-2">
-                <div className="avatar avatar-online hidden md:block ">
-                    <div className="w-10 rounded-full ">
-                        <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
+                <div className="avatar hidden md:block tooltip tooltip-bottom" data-tip={users?.email}>
+                    <div className="w-10 rounded-full cursor-pointer ">
+                        <img src={`${users ? users.photoURL : userIcon }`} />
                     </div>
                 </div>
                 {users ? (

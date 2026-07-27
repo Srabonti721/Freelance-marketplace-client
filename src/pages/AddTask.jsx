@@ -1,4 +1,5 @@
 import { use } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthProvider";
 
 const AddTask = () => {
@@ -13,13 +14,23 @@ const AddTask = () => {
         fetch("http://localhost:3000/task", {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
             },
             body: JSON.stringify(taskData),
         })
             .then((res) => res.json())
             .then((data) => {
                 console.log("after bd", data);
+                if(data.insertedId){
+              Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "add task successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                }
+                form.reset();
             });
     };
     return (
