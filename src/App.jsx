@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import MyPost from "./pages/MyPost";
 import BrowserTask from "./pages/browerTask/BrowserTask";
 import Details from "./pages/browerTask/Details";
+import Update from "./components/MyPost.jsx/Update";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
             },
+            {
+                path:'/update/:id',
+                Component:Update,
+                 loader: ({params}) => fetch(`http://localhost:3000/task/${params.id}`)
+            }
         ],
     },
     {

@@ -1,12 +1,12 @@
-import { use, useEffect, useState } from "react";
+import { use, useEffect } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthProvider";
+import { Link } from "react-router";
+import { MdDelete } from "react-icons/md";
+import { GrUpdate } from "react-icons/gr";
 
 const MyPost = () => {
     const { users, tasks, setTasks } = use(AuthContext);
-    // const [task, setTask] = useState(tasks);
-    
-
     useEffect(() => {
         fetch(`http://localhost:3000/myTask?email=${users.email}`)
             .then((res) => res.json())
@@ -52,6 +52,7 @@ const MyPost = () => {
         });
     };
 
+
     return (
         <div>
             <div className="overflow-x-auto my-10 px-5">
@@ -82,14 +83,14 @@ const MyPost = () => {
                                     ${task.budget}
                                 </td>
                                 <td className="space-x-2">
-                                    <button className="btn border-amber-400 rounded-3xl">
-                                        Update
-                                    </button>
+                                    <Link to={`/update/${task._id}`} className="btn border-amber-400 rounded-3xl">
+                                       <GrUpdate />  Update
+                                    </Link>
                                     <button
                                         onClick={() => handleDelete(task._id)}
                                         className="btn border-red-400 rounded-3xl "
                                     >
-                                        Delete
+                                       <MdDelete size={20} /> Delete
                                     </button>
                                     <button className="btn border-green-400 rounded-3xl">
                                         Bids
