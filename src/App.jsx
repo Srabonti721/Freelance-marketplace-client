@@ -1,4 +1,5 @@
 import {} from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 import AuthLayout from "./Auth/AuthLayout";
@@ -6,14 +7,15 @@ import Login from "./Auth/Login";
 import PrivateRoute from "./Auth/PrivateRoute";
 import Register from "./Auth/Register";
 import MainLayout from "./Layouts/MainLayout";
+import Loading from "./components/Loading";
+import Update from "./components/MyPost.jsx/Update";
 import AuthProvider from "./context/AuthProvider";
 import AddTask from "./pages/AddTask";
+import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import MyPost from "./pages/MyPost";
 import BrowserTask from "./pages/browerTask/BrowserTask";
 import Details from "./pages/browerTask/Details";
-import Update from "./components/MyPost.jsx/Update";
-import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -38,10 +40,14 @@ const router = createBrowserRouter([
             },
             {
                 path: "/browser/:id",
-                element:<PrivateRoute>
-                  <Details/>
-                </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/task/${params.id}`),
+                element: (
+                    <PrivateRoute>
+                        <Details />
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) =>
+                    fetch(`http://localhost:3000/task/${params.id}`),
+                hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/myPost",
@@ -52,11 +58,12 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path:'/update/:id',
-                Component:Update,
-                 loader: ({params}) => fetch(`http://localhost:3000/task/${params.id}`),
-                 
-            }
+                path: "/update/:id",
+                Component: Update,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:3000/task/${params.id}`),
+                hydrateFallbackElement: <Loading></Loading>,
+            },
         ],
     },
     {
@@ -74,15 +81,17 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path:'*',
-        Component:ErrorPage
-    }
+        path: "*",
+        Component: ErrorPage,
+    },
 ]);
 
 function App() {
     return (
         <AuthProvider>
-            <RouterProvider router={router} />;
+            <HelmetProvider>
+                <RouterProvider router={router} />;
+            </HelmetProvider>
             <ToastContainer />
         </AuthProvider>
     );

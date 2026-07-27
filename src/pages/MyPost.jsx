@@ -4,6 +4,8 @@ import { AuthContext } from "../context/AuthProvider";
 import { Link } from "react-router";
 import { MdDelete } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
+import { BiDollar } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
 
 const MyPost = () => {
     const { users, tasks, setTasks } = use(AuthContext);
@@ -55,6 +57,9 @@ const MyPost = () => {
 
     return (
         <div>
+            <Helmet>
+                 <title>Freelancer || MyPost</title>
+            </Helmet>
             <div className="overflow-x-auto my-10 px-5">
                 <table className="table table-zebra">
                     <thead>
@@ -82,18 +87,18 @@ const MyPost = () => {
                                 <td className="font-semibold">
                                     ${task.budget}
                                 </td>
-                                <td className="space-x-2">
-                                    <Link to={`/update/${task._id}`} className="btn border-amber-400 rounded-3xl">
+                                <td className="space-y-2 md:space-x-2">
+                                    <Link to={`/update/${task._id}`} className="btn btn-sm  border-amber-400 md:btn-md rounded-3xl">
                                        <GrUpdate />  Update
                                     </Link>
                                     <button
                                         onClick={() => handleDelete(task._id)}
-                                        className="btn border-red-400 rounded-3xl "
+                                        className="btn btn-sm md:btn-md border-red-400 rounded-3xl "
                                     >
                                        <MdDelete size={20} /> Delete
                                     </button>
-                                    <button className="btn border-green-400 rounded-3xl">
-                                        Bids
+                                    <button className="btn btn-sm md:btn-md border-green-400 rounded-3xl">
+                                       <BiDollar size={20} />Bids
                                     </button>
                                 </td>
                             </tr>

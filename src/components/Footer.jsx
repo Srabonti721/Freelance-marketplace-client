@@ -34,9 +34,13 @@ const Footer = () => {
       </div>
     </fieldset>
     <div className='flex gap-4'>
-      <FaFacebook size={24}/>
-      <IoLogoYoutube size={24}/>
-      <FaGithub size={24}/>
+<a href='https://www.youtube.com/channel/UCMkuZW-TroSQvp5ZHt0VHmA' target="_blank">
+    <IoLogoYoutube size={24}/>
+</a>
+<a href='https://github.com/' target="_blank">
+    <FaGithub size={24}/>
+</a>
+<a> <FaFacebook size={24}/> </a>
     </div>
   </form>
 </footer>

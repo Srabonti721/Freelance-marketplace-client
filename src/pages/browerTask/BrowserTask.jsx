@@ -1,4 +1,5 @@
 import { use } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, } from "react-router";
 
 const taskPromise = fetch("http://localhost:3000/task").then(res=>res.json())
@@ -16,6 +17,9 @@ const BrowserTask = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Freelancer || Browser</title>
+            </Helmet>
             <div className="text-center my-6 w-3/4 mx-auto">
                 <h2 className="text-2xl md:4xl font-semibold">AllTask</h2>
                 <p className="">

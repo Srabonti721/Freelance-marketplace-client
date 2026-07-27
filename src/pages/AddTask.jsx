@@ -1,6 +1,7 @@
 import { use } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddTask = () => {
     const { users } = use(AuthContext);
@@ -35,6 +36,9 @@ const AddTask = () => {
     };
     return (
         <div className="bg-gray-100 p-10 rounded-xl my-5">
+            <Helmet>
+                 <title>Freelancer || AddTask</title>
+            </Helmet>
             <div className="text-center space-y-4">
                 <h2 className="text-2xl md:text-4xl font-semibold">Add Task</h2>
                 <p className="text-sm md:text-xl text-gray-500">
@@ -79,6 +83,8 @@ const AddTask = () => {
                                 <option>Design</option>
                                 <option>Writing</option>
                                 <option>Marketing</option>
+                                <option>Video Editing</option>
+                                <option>Data Entry</option>
                             </select>
                         </div>
                     </div>

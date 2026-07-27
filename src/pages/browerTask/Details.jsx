@@ -1,10 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router';
 
 const Details = () => {
     const {name,email,deadline ,budget, title, category, description} = useLoaderData()
     return (
-<div className="max-w-3xl mx-auto my-10">
+<div className="max-w-3xl mx-auto my-10 px-4">
+  <Helmet>
+     <title>Freelancer || Browser|| Details</title>
+  </Helmet>
   <div className="card bg-base-100 shadow-xl border">
     <div className="card-body">
       <h2 className="card-title text-3xl font-bold">
