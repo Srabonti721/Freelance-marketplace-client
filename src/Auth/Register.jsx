@@ -26,7 +26,6 @@ const Register = () => {
         if (!/\d/.test(password)) {
             return setError("Password must be 1 number case");
         }
-        console.log(name, photo, email, password);
         createUser(email, password)
             .then((result) => {
                 const users = result.user;
@@ -44,6 +43,7 @@ const Register = () => {
         GoogleSignIn()
             .then((result) => {
                 console.log(result.user);
+                navigate('/')
             })
             .catch((error) => {
                 console.log(error);

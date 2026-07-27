@@ -10,7 +10,6 @@ const AddTask = () => {
         const form = e.target;
         const formData = new FormData(form);
         const taskData = Object.fromEntries(formData.entries());
-        console.log(taskData);
 
         fetch("http://localhost:3000/task", {
             method: "POST",
@@ -21,7 +20,6 @@ const AddTask = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log("after bd", data);
                 if(data.insertedId){
               Swal.fire({
                     position: "top-end",

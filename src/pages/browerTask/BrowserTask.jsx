@@ -7,7 +7,6 @@ const taskPromise = fetch("http://localhost:3000/task").then(res=>res.json())
 const BrowserTask = () => {
     const allTask = use(taskPromise)
     const handleDetails = (id) => {
-        console.log("clicked", id);
         fetch(`http://localhost:3000/task/${id}`)
             .then((res) => res.json())
             .then((data) => {

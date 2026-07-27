@@ -7,7 +7,6 @@ const {tasks, setTasks} = use(AuthContext)
     fetch("http://localhost:3000/featuredTasks")
         .then(res => res.json())
         .then(data => {
-            // console.log(data);
             setTasks(data)
             });
 }, []);
