@@ -9,7 +9,8 @@ const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [users, setUsers] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [tasks, setTasks] = useState([]);
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -50,8 +51,10 @@ setUsers(currentUser)
     const userInfo = {
         users,
          loading,
+         tasks,
         setUsers,
         setLoading,
+        setTasks,
         createUser,
         loginUser,
         updateUser,

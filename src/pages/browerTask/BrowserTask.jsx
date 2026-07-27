@@ -1,12 +1,10 @@
 import { use } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link, } from "react-router";
 
 const taskPromise = fetch("http://localhost:3000/task").then(res=>res.json())
 
 const BrowserTask = () => {
     const allTask = use(taskPromise)
-    // const allTask = useLoaderData();
-    console.log(allTask);
     const handleDetails = (id) => {
         console.log("clicked", id);
         fetch(`http://localhost:3000/task/${id}`)

@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Featured = () => {
-const [tasks, setTasks] = useState([]);
-console.log(tasks);
-
-
+const {tasks, setTasks} = use(AuthContext)
     useEffect(() => {
     fetch("http://localhost:3000/featuredTasks")
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             setTasks(data)
             });
 }, []);
