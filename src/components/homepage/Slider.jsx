@@ -32,7 +32,7 @@ const Slider = () => {
     <div className="absolute text-white inset-0 flex flex-col justify-center items-center ">
       <h2 className=" text-2xl md:text-5xl font-bold">Digital marketplace</h2>
       <p className="mt-4 text-sm md:text-lg">Learn Digital marketplace  Through Interactive Lessons</p>
-      <button className="btn btn-secondary mt-6">Visit Now</button>
+      <button className="btn  text-white bg-[#278718] mt-6">Visit Now</button>
     </div>
   </div>
 </SwiperSlide>
@@ -46,7 +46,7 @@ const Slider = () => {
     <div className="absolute text-white inset-0 flex flex-col justify-center items-center ">
       <h2 className="text-3xl md:text-5xl font-bold">Web Design</h2>
       <p className="mt-4 text-sm md:text-lg">Learn Web Design Through Interactive Lessons</p>
-      <button className="btn btn-secondary mt-6">Visit Now</button>
+      <button className="btn  text-white bg-[#278718] mt-6">Visit Now</button>
     </div>
   </div>
 </SwiperSlide>
@@ -60,7 +60,7 @@ const Slider = () => {
     <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
       <h2 className=" text-2xl md:text-5xl font-bold">Graphic Design</h2>
       <p className="mt-4 text-sm md:text-lg">Learn Graphic Design Through Interactive Lessons</p>
-      <button className="btn btn-secondary mt-6">Visit Now</button>
+      <button className="btn text-white bg-[#278718] mt-6">Visit Now</button>
     </div>
   </div>
 </SwiperSlide>

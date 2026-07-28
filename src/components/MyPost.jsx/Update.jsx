@@ -132,7 +132,7 @@ const Update = () => {
                         required
                     ></textarea>
                 </fieldset>
-                <button className="btn hover:text-xl w-full my-4 hover:text-green-700  hover:bg-white btn-primary rounded-full hover:bg[#0E3608]">
+                <button className="btn hover:text-xl w-full my-4 hover:text-green-700  hover:bg-white text-white bg-[#0E3608] rounded-full hover:bg[#0E3608]">
                     Update Task
                 </button>
             </form>

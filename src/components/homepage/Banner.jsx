@@ -5,7 +5,6 @@ import user3 from "../../assets/user3.jpg";
 import user4 from "../../assets/user4.jpg";
 
 const Banner = () => {
-
     return (
         <div className="relative">
             <div>
@@ -49,7 +48,7 @@ const Banner = () => {
                                 className="input join-item"
                                 placeholder="what are you looking for?"
                             />
-                            <button className="btn join-item rounded-r-full btn-primary">
+                            <button className="btn join-item  rounded-r-full bg-[#0E3608] text-white">
                                 search
                             </button>
                         </div>

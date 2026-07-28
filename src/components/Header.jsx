@@ -88,14 +88,14 @@ const Header = () => {
                 {users ? (
                     <button
                         onClick={handleLogOut}
-                        className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none"
+                        className="btn text-xl px-6 text-white bg-[#0E3608] hover:bg-[#278718] border-none"
                     >
                         Logout
                     </button>
                 ) : (
                     <Link
                         to={"/auth/login"}
-                        className="btn text-xl px-6 btn-primary hover:bg-[#278718] border-none"
+                        className="btn text-xl px-6 text-white bg-[#0E3608] hover:bg-[#278718] border-none"
                     >
                         Login
                     </Link>

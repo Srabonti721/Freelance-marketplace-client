@@ -32,7 +32,7 @@ const Featured = () => {
                             </p>
 
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">
+                                <button className="btn text-white bg-[#0E3608]">
                                     See Details
                                 </button>
                             </div>

@@ -7,9 +7,9 @@
   --color-primary: #0E3608;
   --color-secondary: #278718;
 }
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
   name: "dark";
-}
+} */
 
 .active{
     text-decoration: underline;
