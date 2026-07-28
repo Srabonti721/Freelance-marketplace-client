@@ -131,7 +131,7 @@ const AddTask = () => {
                         required
                     ></textarea>
                 </fieldset>
-                <button className="btn hover:text-xl w-full my-4 btn-secondary rounded-full hover:bg[#0E3608]">
+                <button className="btn hover:text-xl w-full my-4 text-white bg-[#278718] rounded-full hover:bg[#0E3608]">
                     Add Task
                 </button>
             </form>

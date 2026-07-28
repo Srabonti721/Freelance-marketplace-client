@@ -48,10 +48,7 @@ const BrowserTask = () => {
 
                                 <th>
                                     <Link to={`/browser/${task._id}`}>
-                                        <button
-
-                                            className="btn mr-2 btn-secondary"
-                                        >
+                                        <button className="btn mr-2 text-white bg-[#278718]">
                                             Details
                                         </button>
                                     </Link>
