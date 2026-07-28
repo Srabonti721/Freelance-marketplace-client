@@ -1,27 +1,30 @@
 import { use } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthProvider";
-import { Helmet } from "react-helmet-async";
 
 const Update = () => {
     const { users } = use(AuthContext);
     const { _id, title, description, budget, deadline, category } =
         useLoaderData();
-        
+
     const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const updatedForm = Object.fromEntries(formData.entries());
 
-        fetch(`http://localhost:3000/task/${_id}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
+        fetch(
+            `https://freelance-task-marketplace-server-gamma.vercel.app/task/${_id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(updatedForm),
             },
-            body: JSON.stringify(updatedForm),
-        })
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount) {
@@ -35,13 +38,12 @@ const Update = () => {
     };
     return (
         <div className="bg-gray-100 p-10 rounded-xl my-5">
-                <Helmet> 
+            <Helmet>
                 <title>Freelancer || update task</title>
             </Helmet>
             <div className="text-center space-y-4">
-
                 <h2 className="text-2xl md:text-4xl font-semibold">
-                    Update Task 
+                    Update Task
                 </h2>
             </div>
             <form onSubmit={handleUpdate}>

@@ -7,8 +7,13 @@
   --color-primary: #0E3608;
   --color-secondary: #278718;
 }
+@plugin "daisyui/theme" {
+  name: "dark";
+}
+
 .active{
     text-decoration: underline;
     font-size: large;
     color: cadetblue;
 }
+

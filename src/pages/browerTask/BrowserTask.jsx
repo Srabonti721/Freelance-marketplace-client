@@ -1,18 +1,20 @@
-import { use } from "react";
+import {} from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, } from "react-router";
-
-const taskPromise = fetch("http://localhost:3000/task").then(res=>res.json())
+import { Link, useLoaderData } from "react-router";
 
 const BrowserTask = () => {
-    const allTask = use(taskPromise)
-    const handleDetails = (id) => {
-        fetch(`http://localhost:3000/task/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            });
-    };
+    const allTask = useLoaderData();
+    console.log(allTask);
+
+    // const handleDetails = (id) => {
+    //     fetch(
+    //         `https://freelance-task-marketplace-server-gamma.vercel.app/task/${id}`,
+    //     )
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data);
+    //         });
+    // };
 
     return (
         <div>
@@ -59,9 +61,9 @@ const BrowserTask = () => {
                                 <th>
                                     <Link to={`/browser/${task._id}`}>
                                         <button
-                                            onClick={() =>
-                                                handleDetails(task._id)
-                                            }
+                                            // onClick={() =>
+                                            //     handleDetails(task._id)
+                                            // }
                                             className="btn mr-2 btn-secondary"
                                         >
                                             Details

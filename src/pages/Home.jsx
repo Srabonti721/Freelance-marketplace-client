@@ -1,20 +1,35 @@
-import React from 'react';
-import Banner from '../components/homepage/Banner';
-import Slider from '../components/homepage/Slider';
-import Featured from '../components/homepage/Featured';
-import { Helmet } from 'react-helmet-async';
-import Faq from '../components/Faq';
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import Faq from "../components/Faq";
+import Banner from "../components/homepage/Banner";
+import Featured from "../components/homepage/Featured";
+import Slider from "../components/homepage/Slider";
 
 const Home = () => {
+    const [theme, setTheme] = useState("light");
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
     return (
-        <div>    
+        <div>
             <Helmet>
                 <title>Freelances || Home</title>
-                </Helmet>  
-            <Slider/>
-            <Banner/>
-            <Featured/>
-            <Faq/>
+            </Helmet>
+
+            <div className="flex justify-end p-5">
+                <input
+                    type="checkbox"
+                    className="toggle"
+                    checked={theme === "dark"}
+                    onChange={() => {
+                        setTheme(theme === "light" ? "dark" : "light");
+                    }}
+                />
+            </div>
+            <Slider />
+            <Banner />
+            <Featured />
+            <Faq />
         </div>
     );
 };

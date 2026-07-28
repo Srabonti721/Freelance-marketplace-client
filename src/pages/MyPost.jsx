@@ -1,16 +1,18 @@
 import { use, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { BiDollar } from "react-icons/bi";
+import { GrUpdate } from "react-icons/gr";
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthProvider";
-import { Link } from "react-router";
-import { MdDelete } from "react-icons/md";
-import { GrUpdate } from "react-icons/gr";
-import { BiDollar } from "react-icons/bi";
-import { Helmet } from "react-helmet-async";
 
 const MyPost = () => {
     const { users, tasks, setTasks } = use(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:3000/myTask?email=${users.email}`)
+        fetch(
+            `https://freelance-task-marketplace-server-gamma.vercel.app/myTask?email=${users.email}`,
+        )
             .then((res) => res.json())
             .then((data) => {
                 setTasks(data);
@@ -28,37 +30,39 @@ const MyPost = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed)
-                fetch(`http://localhost:3000/task/${id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "content-type": "application/json",
+                fetch(
+                    `https://freelance-task-marketplace-server-gamma.vercel.app/task/${id}`,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify(tasks),
                     },
-                    body: JSON.stringify(tasks),
-                })
+                )
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount) {
                             const remainingData = tasks.filter(
-                                (singleTask) => singleTask._id !== id
+                                (singleTask) => singleTask._id !== id,
                             );
-                            
+
                             setTasks(remainingData);
-                            
+
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Posted data has been deleted.",
-                                icon: "success"
+                                icon: "success",
                             });
                         }
                     });
         });
     };
 
-
     return (
         <div>
             <Helmet>
-                 <title>Freelancer || MyPost</title>
+                <title>Freelancer || MyPost</title>
             </Helmet>
             <div className="overflow-x-auto my-10 px-5">
                 <table className="table table-zebra">
@@ -88,17 +92,21 @@ const MyPost = () => {
                                     ${task.budget}
                                 </td>
                                 <td className="space-y-2 md:space-x-2">
-                                    <Link to={`/update/${task._id}`} className="btn btn-sm  border-amber-400 md:btn-md rounded-3xl">
-                                       <GrUpdate />  Update
+                                    <Link
+                                        to={`/update/${task._id}`}
+                                        className="btn btn-sm  border-amber-400 md:btn-md rounded-3xl"
+                                    >
+                                        <GrUpdate /> Update
                                     </Link>
                                     <button
                                         onClick={() => handleDelete(task._id)}
                                         className="btn btn-sm md:btn-md border-red-400 rounded-3xl "
                                     >
-                                       <MdDelete size={20} /> Delete
+                                        <MdDelete size={20} /> Delete
                                     </button>
                                     <button className="btn btn-sm md:btn-md border-green-400 rounded-3xl">
-                                       <BiDollar size={20} />Bids
+                                        <BiDollar size={20} />
+                                        Bids
                                     </button>
                                 </td>
                             </tr>

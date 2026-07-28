@@ -37,6 +37,11 @@ const router = createBrowserRouter([
             {
                 path: "/browser",
                 Component: BrowserTask,
+                loader: () =>
+                    fetch(
+                        "https://freelance-task-marketplace-server-gamma.vercel.app/task",
+                    ),
+                hydrateFallbackElement: <Loading />,
             },
             {
                 path: "/browser/:id",
@@ -46,8 +51,10 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:3000/task/${params.id}`),
-                hydrateFallbackElement: <Loading></Loading>,
+                    fetch(
+                        `https://freelance-task-marketplace-server-gamma.vercel.app/task/${params.id}`,
+                    ),
+                hydrateFallbackElement: <Loading />,
             },
             {
                 path: "/myPost",
@@ -61,8 +68,10 @@ const router = createBrowserRouter([
                 path: "/update/:id",
                 Component: Update,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:3000/task/${params.id}`),
-                hydrateFallbackElement: <Loading></Loading>,
+                    fetch(
+                        `https://freelance-task-marketplace-server-gamma.vercel.app/task/${params.id}`,
+                    ),
+                hydrateFallbackElement: <Loading />,
             },
         ],
     },

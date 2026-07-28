@@ -1,7 +1,7 @@
 import { use } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthProvider";
-import { Helmet } from "react-helmet-async";
 
 const AddTask = () => {
     const { users } = use(AuthContext);
@@ -11,23 +11,26 @@ const AddTask = () => {
         const formData = new FormData(form);
         const taskData = Object.fromEntries(formData.entries());
 
-        fetch("http://localhost:3000/task", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
+        fetch(
+            "https://freelance-task-marketplace-server-gamma.vercel.app/task",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(taskData),
             },
-            body: JSON.stringify(taskData),
-        })
+        )
             .then((res) => res.json())
             .then((data) => {
-                if(data.insertedId){
-              Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "add task successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "add task successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
                 }
                 form.reset();
             });
@@ -35,7 +38,7 @@ const AddTask = () => {
     return (
         <div className="bg-gray-100 p-10 rounded-xl my-5">
             <Helmet>
-                 <title>Freelancer || AddTask</title>
+                <title>Freelancer || AddTask</title>
             </Helmet>
             <div className="text-center space-y-4">
                 <h2 className="text-2xl md:text-4xl font-semibold">Add Task</h2>
