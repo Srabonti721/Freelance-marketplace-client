@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
 import Faq from "../components/Faq";
 import Banner from "../components/homepage/Banner";
@@ -26,10 +27,21 @@ const Home = () => {
                     }}
                 />
             </div>
-            <Slider />
-            <Banner />
-            <Featured />
-            <Faq />
+            <Fade triggerOnce>
+                <Slider />
+            </Fade>
+
+            <Fade direction="up" triggerOnce>
+                <Banner />
+            </Fade>
+
+            <Fade direction="left" triggerOnce>
+                <Featured />
+            </Fade>
+
+            <Fade direction="right" triggerOnce>
+                <Faq />
+            </Fade>
         </div>
     );
 };
